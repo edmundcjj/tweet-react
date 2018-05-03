@@ -1,0 +1,14 @@
+
+
+img{
+  border-radius: 50%;
+}
+
+h3{
+  font-family: sans-serif;
+}
+
+#retweets_count{
+  color: grey;
+  font-weight: bold;
+}

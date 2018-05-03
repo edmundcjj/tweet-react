@@ -7,10 +7,10 @@ class Tweet_Item extends React.Component {
     render() {
         return (
           <div>
-            <h3 style={{color: 'blue'}}>{this.props.screen_name}</h3>
-            <h5 style={{color: 'red'}}>{this.props.display_url}</h5>
-            <p>ID => {this.props.index}</p>
-            <p>Text => {this.props.text}</p>
+            <img src={this.props.profile_img} alt="Display Picture"></img>
+            <h3><b>{this.props.name}   @ <a href={this.props.profile_url} target="_blank">{this.props.screen_name}</a></b></h3>
+            <p>{this.props.tweet_text}</p>
+            <p id="retweets_count">{this.props.retweet_count} retweets</p>
             <hr></hr>
           </div>
         );
@@ -20,9 +20,14 @@ class Tweet_Item extends React.Component {
 // All the tweets
 class Tweet_List extends React.Component {
     render() {
-        let tweetElements = this.props.tweets.map( (item, index) => {
-                              return <Tweet_Item key={item.id} index={item.id} text={item.text} 
-                                                 screen_name={item.user.screen_name} display_url={item.user.entities.url.urls[0].display_url.toLowerCase()}>
+        let tweetElements = this.props.tweets.map( (item) => {
+                              return <Tweet_Item key={item.id}
+                                                 tweet_text={item.text}
+                                                 name={item.user.name}
+                                                 screen_name={item.user.screen_name}
+                                                 profile_img={item.user.profile_image_url_https}
+                                                 retweet_count={item.retweet_count}
+                                                 profile_url="https://twitter.com/kanyewest">
                               </Tweet_Item>
                             });
         return (
